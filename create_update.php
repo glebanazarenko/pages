@@ -5,7 +5,7 @@ if(!empty($_POST)){
     $id = null;
     
     if(!isset($_GET["id"])){
-        $result = mysqli_query($connect, "SELECT u.id from users as u WHERE u.login=".$_GET['session_user']);
+        $result = mysqli_query($connect, 'SELECT u.id from users as u WHERE u.login="'.$_GET['session_user'].'"');
         $profile = mysqli_fetch_assoc($result);
 
 

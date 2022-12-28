@@ -37,7 +37,7 @@ else{
         <a href=profile.php?id='.$profile["id"].'&name='.$name.'&session_user='.$session_user.'&reg='.$reg.'>
         '.$profile["name"].'
         </a>';
-        if(isset($session_user) && ($session_user === $profile["login"] || $user_name["role_id"] == 1)){
+        if(isset($session_user) && ($session_user == $profile["login"] || $user_name["role_id"] == 1)){
             $content .= '
             |
             <a href=create_update.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'&name='.$name.'>
