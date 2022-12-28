@@ -19,20 +19,24 @@ $title = "Страницы пользователя ".$profile["name"]."";
 $content = "";
 $content = "<ul>";
 do{
-    
         $content .= '<li>
-        <a href=page.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'>
+        <a href=page.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$_GET['name'].'>
         '.$profile["title"].'
-        </a>
-        |
-        <a href=create_update.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'>
-        Редактировать
-        </a>
-        |
-        <a href=delete.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'>
-        Удалить
-        </a>
-        </li>';   
+        </a>';
+        if(isset($session_user)){
+                $content .= '
+                |
+                <a href=create_update.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$name.'>
+                Редактировать
+                </a>
+                |
+                <a href=delete.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$name.'>
+                Удалить
+                </a>
+                </li>';   
+        }
+
+
 }while($profile = mysqli_fetch_assoc($result));
 $content .= "</ul>";
 
@@ -40,6 +44,7 @@ $content .= "</ul>";
 if(isset($_GET['reg'])){
 	$reg = $_GET['reg'];
 	$session_user = $_GET['session_user'];
+        $name = $_GET['name'];
 }else{
 	$reg = 0;
 }

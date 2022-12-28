@@ -21,7 +21,7 @@
             <div id="left">
                 <form method="POST">
                     <label></label>
-                    <p>Вошли в аккаунт: <?=$session_user?></p>
+                    <p>Вошли в аккаунт: <?=$name?></p>
                     
                     <label></label>
 					<a href="exit.php">Выйти из аккаунта</a>

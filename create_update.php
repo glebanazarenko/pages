@@ -70,6 +70,7 @@ $content = "
 if(isset($_GET['reg'])){
 	$reg = $_GET['reg'];
 	$session_user = $_GET['session_user'];
+    $name = $_GET['name'];
 }else{
 	$reg = 0;
 }

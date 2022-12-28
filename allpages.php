@@ -8,6 +8,9 @@ else{
     $reg = 0;
 }
 
+$result_3 = mysqli_query($connect, "SELECT u.name FROM users as u WHERE u.login = \"$session_user\"");
+$user_name = mysqli_fetch_assoc($result_3);
+
 $result = mysqli_query($connect, "SELECT * FROM pages WHERE 1");
 
 $title = "Все страницы";
@@ -19,30 +22,38 @@ if(!$result || mysqli_num_rows($result) == 0){
 else{
     $content = "<ul>";
     while($page = mysqli_fetch_assoc($result)){
-        $result_2 = mysqli_query($connect, "SELECT u.name, u.id FROM pages as p JOIN users as u on u.id = p.id_user AND p.id = ".$page["id"]);
+        $result_2 = mysqli_query($connect, "SELECT u.id, u.login, u.name FROM pages as p JOIN users as u on u.id = p.id_user AND p.id = ".$page["id"]);
         $profile = mysqli_fetch_assoc($result_2);
 
+        if(isset($session_user)){
+            $name = $user_name["name"];
+        }
+
         $content .= '<li>
-        <a href=page.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'>
+        <a href=page.php?id='.$page["id"].'&name='.$name.'&session_user='.$session_user.'&reg='.$reg.'>
         '.$page["title"].'
         </a>
         |
-        <a href=profile.php?id='.$profile["id"].'&reg='.$reg.'&session_user='.$session_user.'>
+        <a href=profile.php?id='.$profile["id"].'&name='.$name.'&session_user='.$session_user.'&reg='.$reg.'>
         '.$profile["name"].'
-        </a>
-        |
-        <a href=create_update.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'>
-        Редактировать
-        </a>
-        |
-        <a href=delete.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'>
-        Удалить
-        </a>
-        </li>';   
+        </a>';
+        if(isset($session_user) && $session_user === $profile["login"]){
+            $content .= '
+            |
+            <a href=create_update.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'&name='.$name.'>
+            Редактировать
+            </a>
+            |
+            <a href=delete.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'&name='.$name.'>
+            Удалить
+            </a>
+            </li>';
+        }   
     }
     $content .= "</ul>";
 }
 if(isset($session_user)){
+    $name = $user_name["name"];
     require("template.php");
 }
 else{
