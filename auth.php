@@ -10,15 +10,23 @@ $result = mysqli_query($connect, "SELECT * FROM users WHERE
 //echo md5($_POST["password"]);
 
 if(!$result || mysqli_num_rows($result) == 0){
-	echo "Такой пользователь не существует.";
-	exit;
+    if(!isset($_GET['session_user'])){
+	    echo "Такой пользователь не существует.";
+	    exit;
+    }
 }
 
-$Arr = mysqli_fetch_assoc($result);
-$_SESSION["user"] = $Arr['login'];
+if(!isset($_GET['session_user'])){
+    $Arr = mysqli_fetch_assoc($result);
+    $_SESSION["user"] = $Arr['login'];
+    $session_user = $_SESSION["user"];
+}
+else{
+    $session_user = $_GET['session_user'];
+}
 //require("session.php");
 //echo''.$session_user.'';
-$session_user = $_SESSION["user"];
+
 include("allpages.php");
 
 ?>

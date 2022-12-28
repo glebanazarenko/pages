@@ -9,7 +9,7 @@
         <div id="container">
             <div id="header">
                 <ul id="menu">
-                    <li><a href="allpages.php">Страницы</a></li>
+                    <li><a href="auth.php?session_user=<?=$session_user?>">Страницы</a></li>
                     <li><a href="create_update.php">Создать</a></li>
                     <?php if(isset($pageid)):?>
                         <li><a href="create_update.php?id=<?=$pageid?>">Редактировать</a></li>

@@ -24,7 +24,7 @@ if(!empty($_POST)){
         $id = $_GET["id"];
     }
 
-    header("Location: page.php?id=".$id);
+    header("Location: page.php?id=\".$id.\"&reg=\".$reg.\"&session_user=\"$session_user\"");
     exit;
 }
 
@@ -67,5 +67,16 @@ $content = "
 </form>
 ";
 
-require("template.php");
+if(isset($_GET['reg'])){
+	$reg = $_GET['reg'];
+	$session_user = $_GET['session_user'];
+}else{
+	$reg = 0;
+}
+if($reg){
+	require("template.php");
+}
+else{
+	require("template1.php");
+}
 ?>

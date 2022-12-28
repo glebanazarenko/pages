@@ -7,7 +7,19 @@ if(!isset($_GET["id"])){
 }
 else{
     mysqli_query($connect, "DELETE FROM pages WHERE id=".$_GET["id"]);
-    header("Location: allpages.php");
+
+    if(isset($_GET['reg'])){
+        $reg = $_GET['reg'];
+        $session_user = $_GET['session_user'];
+    }else{
+        $reg = 0;
+    }
+    if($reg){
+        header("Location: auth.php?session_user=$session_user");
+    }
+    else{
+        header("Location: allpages.php");
+    }
 }
 
 //require("template.php");

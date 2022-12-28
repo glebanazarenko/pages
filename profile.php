@@ -36,5 +36,17 @@ do{
 }while($profile = mysqli_fetch_assoc($result));
 $content .= "</ul>";
 
-require("template.php");
+
+if(isset($_GET['reg'])){
+	$reg = $_GET['reg'];
+	$session_user = $_GET['session_user'];
+}else{
+	$reg = 0;
+}
+if($reg){
+	require("template.php");
+}
+else{
+	require("template1.php");
+}
 ?>
