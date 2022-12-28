@@ -5,10 +5,14 @@ if(!empty($_POST)){
     $id = null;
     
     if(!isset($_GET["id"])){
+        $result = mysqli_query($connect, "SELECT u.id from users as u WHERE u.login=".$_GET['session_user']);
+        $profile = mysqli_fetch_assoc($result);
+
+
         mysqli_query($connect, "INSERT INTO pages (title, content, id_user) VALUES (
-            \"".mysqli_escape_string($connect, $_POST["title"])."\", 
-            \"".mysqli_escape_string($connect, $_POST["content"])."\",
-            \"".$_SESSION["user"]."\"
+            \"".$_POST["title"]."\", 
+            \"".$_POST["content"]."\",
+            \"".$profile["id"]."\"
             )"
         );
         

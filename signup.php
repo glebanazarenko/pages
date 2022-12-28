@@ -5,10 +5,11 @@ if(!empty($_POST)){
     $result = mysqli_query($connect, "SELECT * FROM users WHERE login=\"".$_POST['login']."\"");
     //echo mysqli_num_rows($result);
     if(mysqli_num_rows($result) == 0){
-        mysqli_query($connect, "INSERT INTO users (name, login, password) VALUES (
+        mysqli_query($connect, "INSERT INTO users (name, login, password, role_id) VALUES (
             \"".$_POST["name"]."\",
             \"".$_POST["login"]."\",
-            \"".md5($_POST["password"])."\" 
+            \"".md5($_POST["password"])."\",
+            \"2\" 
             )"
         );
         $_SESSION["user"] = $_POST["login"];

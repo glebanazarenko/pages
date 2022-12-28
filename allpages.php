@@ -8,7 +8,7 @@ else{
     $reg = 0;
 }
 
-$result_3 = mysqli_query($connect, "SELECT u.name FROM users as u WHERE u.login = \"$session_user\"");
+$result_3 = mysqli_query($connect, "SELECT u.name, u.role_id FROM users as u WHERE u.login = \"$session_user\"");
 $user_name = mysqli_fetch_assoc($result_3);
 
 $result = mysqli_query($connect, "SELECT * FROM pages WHERE 1");
@@ -37,7 +37,7 @@ else{
         <a href=profile.php?id='.$profile["id"].'&name='.$name.'&session_user='.$session_user.'&reg='.$reg.'>
         '.$profile["name"].'
         </a>';
-        if(isset($session_user) && $session_user === $profile["login"]){
+        if(isset($session_user) && ($session_user === $profile["login"] || $user_name["role_id"] == 1)){
             $content .= '
             |
             <a href=create_update.php?id='.$page["id"].'&reg='.$reg.'&session_user='.$session_user.'&name='.$name.'>

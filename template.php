@@ -10,7 +10,7 @@
             <div id="header">
                 <ul id="menu">
                     <li><a href="auth.php?session_user=<?=$session_user?>">Страницы</a></li>
-                    <li><a href="create_update.php">Создать</a></li>
+                    <li><a href="create_update.php?reg=<?=$reg?>&session_user=<?=$session_user?>&name=<?=$name?>">Создать</a></li>
                     <?php if(isset($pageid)):?>
                         <li><a href="create_update.php?id=<?=$pageid?>">Редактировать</a></li>
                         <li><a href="delete.php?id=<?=$pageid?>">Удаление</a></li>
