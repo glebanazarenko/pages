@@ -20,19 +20,19 @@ $content = "";
 $content = "<ul>";
 do{
     
-        $content .= "<li>
-        <a href=\"page.php?id=".$profile["id"]."\">
-        ".$profile["title"]."
+        $content .= '<li>
+        <a href=page.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'>
+        '.$profile["title"].'
         </a>
         |
-        <a href=\"create_update.php?id=".$profile["id"]."\">
+        <a href=create_update.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'>
         Редактировать
         </a>
         |
-        <a href=\"delete.php?id=".$profile["id"]."\">
+        <a href=delete.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'>
         Удалить
         </a>
-        </li>";   
+        </li>';   
 }while($profile = mysqli_fetch_assoc($result));
 $content .= "</ul>";
 
