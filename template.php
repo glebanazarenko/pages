@@ -12,8 +12,8 @@
                     <li><a href="auth.php?session_user=<?=$session_user?>">Страницы</a></li>
                     <li><a href="create_update.php?reg=<?=$reg?>&session_user=<?=$session_user?>&name=<?=$name?>">Создать</a></li>
                     <?php if(isset($pageid)):?>
-                        <li><a href="create_update.php?id=<?=$pageid?>">Редактировать</a></li>
-                        <li><a href="delete.php?id=<?=$pageid?>">Удаление</a></li>
+                        <li><a href="create_update.php?id=<?=$pageid?>&session_user=<?=$session_user?>&name=<?=$name?>&reg=1">Редактировать</a></li>
+                        <li><a href="delete.php?id=<?=$pageid?>&session_user=<?=$session_user?>&name=<?=$name?>&reg=1">Удаление</a></li>
                     <?php endif;?>
                     <li><a href="#">Элемент 5</a></li>
                 </ul>

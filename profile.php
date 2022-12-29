@@ -34,11 +34,11 @@ do{
         if(isset($_GET['session_user']) && ($_GET['session_user'] == $profile["login"] || $user_name["role_id"] == 1)){
                 $content .= '
                 |
-                <a href=create_update.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$name.'>
+                <a href=create_update.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$_GET['name'].'>
                 Редактировать
                 </a>
                 |
-                <a href=delete.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$name.'>
+                <a href=delete.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$_GET['name'].'>
                 Удалить
                 </a>
                 </li>';   
