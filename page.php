@@ -35,7 +35,7 @@ $result_4 = mysqli_query($connect, "SELECT u.login FROM users as u JOIN pages as
 $user_login = mysqli_fetch_assoc($result_4);
 
 
-if($reg ){
+if($reg){
 	if($user_login["login"] == $_GET["session_user"] || $user_name["role_id"] == 1){
 		require("template.php");
 	}else{

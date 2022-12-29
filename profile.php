@@ -11,8 +11,6 @@ if(isset($_GET['session_user'])){
         $user_name = mysqli_fetch_assoc($result_3);
 }
 
-echo $user_name["role_id"];
-
 $result = mysqli_query($connect, "SELECT p.title, u.name, p.id, u.login FROM users as u JOIN pages as p ON p.id_user = u.id AND u.id =".$_GET['id']);
 
 if(!$result || mysqli_num_rows($result) == 0){
