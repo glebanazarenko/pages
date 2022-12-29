@@ -27,8 +27,20 @@ if(isset($_GET['reg'])){
 }else{
 	$reg = 0;
 }
-if($reg){
-	require("template.php");
+
+$result_3 = mysqli_query($connect, "SELECT u.name, u.role_id FROM users as u WHERE u.login = \"$session_user\"");
+$user_name = mysqli_fetch_assoc($result_3);
+
+$result_4 = mysqli_query($connect, "SELECT u.login FROM users as u JOIN pages as p ON p.id_user = u.id AND p.id =".$pageid);
+$user_login = mysqli_fetch_assoc($result_4);
+
+
+if($reg ){
+	if($user_login["login"] == $_GET["session_user"] || $user_name["role_id"] == 1){
+		require("template.php");
+	}else{
+		require("template2.php");
+	}
 }
 else{
 	require("template1.php");

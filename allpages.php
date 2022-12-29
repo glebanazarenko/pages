@@ -30,7 +30,7 @@ else{
         }
 
         $content .= '<li>
-        <a href=page.php?id='.$page["id"].'&name='.$name.'&session_user='.$session_user.'&reg='.$reg.'>
+        <a href=page.php?id='.$page["id"].'&name='.$name.'&session_user='.$session_user.'&reg='.$reg.'&profile_name='.$profile["name"].'>
         '.$page["title"].'
         </a>
         |

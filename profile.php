@@ -28,7 +28,7 @@ $content = "<ul>";
 
 do{
         $content .= '<li>
-        <a href=page.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$_GET['name'].'>
+        <a href=page.php?id='.$profile["id"].'&reg='.$_GET['reg'].'&session_user='.$_GET['session_user'].'&name='.$_GET['name'].'&profile_name='.$profile["name"].'>
         '.$profile["title"].'
         </a>';
         if(isset($_GET['session_user']) && ($_GET['session_user'] == $profile["login"] || $user_name["role_id"] == 1)){
