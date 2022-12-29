@@ -11,6 +11,7 @@ $result = mysqli_query($connect, "SELECT * FROM pages WHERE id=".$_GET['id']);
 
 if(!$result || mysqli_num_rows($result) == 0){
 	echo "В базе данных нет страницы с таким id.";
+	echo $_GET['id'];
 	exit;
 }
 

@@ -15,8 +15,11 @@ if(!empty($_POST)){
             \"".$profile["id"]."\"
             )"
         );
+
+        $result_2 = mysqli_query($connect, "SELECT p.id from pages as p ORDER BY p.id DESC LIMIT 1");
+        $page = mysqli_fetch_assoc($result_2);
         
-        $id = mysqli_insert_id($connect);
+        $id = $page["id"];
     }
     else{
         mysqli_query($connect, "UPDATE pages SET 
@@ -28,7 +31,13 @@ if(!empty($_POST)){
         $id = $_GET["id"];
     }
 
-    header("Location: page.php?id=\".$id.\"&reg=\".$reg.\"&session_user=\"$session_user\"");
+    $session_user = $_GET['session_user'];
+
+    $result_3 = mysqli_query($connect, "SELECT u.name, u.role_id FROM users as u WHERE u.login = \"$session_user\"");
+    $user_name = mysqli_fetch_assoc($result_3);
+    $name = $user_name["name"];
+
+    header("Location: page.php?id=$id&reg=1&session_user=$session_user&name=$name");
     exit;
 }
 
